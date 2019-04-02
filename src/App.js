@@ -20,13 +20,14 @@ import ItemInfo from "./forms/ItemInfo/ItemInfo";
 import ItemSize from "./forms/ItemSize/ItemSize";
 import AddDocument from "./forms/AddDocument/AddDocument";
 import Turnover from "./forms/Turnover/Turnover";
+import {selectAction} from "./lsfusion";
 
 const forms = [
-    { id: "salesStore", caption: "Продажи", icon: "shopping_cart", component : SalesStore },
+    { id: "zReport", caption: "Продажи", icon: "shopping_cart", component : SalesStore },
     { id: "turnover", caption: "Оборачиваемость", icon: "trending_up", component: Turnover },
     { id: "itemInfo", caption: "Информация по товару", icon: "ballot", component : ItemInfo },
     { id: "itemSize", caption: "Габариты товара", icon: "dashboard", component : ItemSize },
-    { id: "addDocument", caption: "Ввод документа", icon: "add", component : AddDocument }
+    { id: "terminal", caption: "Ввод документа", icon: "add", component : AddDocument }
 ];
 
 const styles = {
@@ -43,9 +44,28 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            form: forms.find(f => f.id === "salesStore"),
+            categories : [],
+            form: null,
+
             opened: false
         };
+    }
+
+    readCategories () {
+        selectAction("API.getCategories",{})
+            .then(c => {
+                var categories = c.map(category => ({...category, ...{id: category.id.replace("API_Category.", "")}}));
+                this.setState(
+                    {
+                        categories,
+                        form: forms.find(f => categories.find(c => c.id === f.id) !== undefined)
+                    })
+            });
+
+    }
+
+    componentDidMount() {
+        this.readCategories();
     }
 
     openMenu = () => {
@@ -61,9 +81,9 @@ class App extends React.Component {
 
     render() {
         const { classes } = this.props;
-        const { form } = this.state;
+        const { categories, form } = this.state;
 
-        const Form = form.component;
+        const Form = form == null ? null : form.component;
 
         return (
             <div>
@@ -91,7 +111,7 @@ class App extends React.Component {
                                 href="https://fonts.googleapis.com/icon?family=Material+Icons"
                                 rel="stylesheet"
                             />
-                            {forms.map(form => (
+                            {forms.filter(form => categories.find(c => c.id === form.id) !== undefined).map(form => (
                                 <ListItem
                                     button
                                     key={form.component}
