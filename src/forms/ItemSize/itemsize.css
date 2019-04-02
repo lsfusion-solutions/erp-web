@@ -1,0 +1,3 @@
+*[class*=' MuiDialog-paperFullScreen-'] {
+    overflow-x: hidden
+}

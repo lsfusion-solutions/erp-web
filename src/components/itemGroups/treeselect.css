@@ -1,0 +1,100 @@
+.tag{background-color:#f4f4f4;border:1px solid #e9e9e9;padding:2px 0 2px 2px;border-radius:2px;display:inline-block}.tag-remove{color:#a0a0a0;font-size:75%;line-height:100%;cursor:pointer;background-color:transparent;border:none;outline:none}.tag-remove.readOnly{cursor:not-allowed}
+.node>label{cursor:pointer;margin-left:2px}.tag-list{display:inline;padding:0;margin:0}.tag-item{display:inline-block;margin:4px}.tag-item .search{border:none;outline:none}.tag-item:last-child{margin-right:4px}
+.node{list-style:none;white-space:nowrap;padding:4px}.node.leaf.collapsed{display:none}.node.disabled>*{color:gray;cursor:not-allowed}.node.match-in-children.hide .node-label{opacity:.5}.toggle{white-space:pre;margin-right:4px;cursor:pointer}.toggle:after{content:" "}.toggle.collapsed:after{content:"+"}.toggle.expanded:after{content:"-"}.searchModeOn .toggle{display:none}.checkbox-item{vertical-align:middle;margin:0 4px 0 0}.checkbox-item.simple-select{display:none}
+.hide:not(.match-in-children){display:none}.react-dropdown-tree-select .dropdown{margin:2px;position:relative;display:table}.react-dropdown-tree-select .dropdown .dropdown-trigger{padding:4px;line-height:20px;max-height:200px;display:inline-block;overflow:auto;border:1px solid hsl(0,0%,80%);border-radius:4px}.react-dropdown-tree-select .dropdown .dropdown-trigger.arrow{cursor:pointer}.react-dropdown-tree-select .dropdown .dropdown-trigger.arrow.bottom:after{content:"\25BC";vertical-align:middle;color:#3c3c3c;margin-right:2px}.react-dropdown-tree-select .dropdown .dropdown-trigger.arrow.top:after{content:"\25B2";vertical-align:middle;color:#3c3c3c;margin-right:2px}.react-dropdown-tree-select .dropdown .dropdown-trigger.arrow.disabled{cursor:not-allowed}.react-dropdown-tree-select .dropdown .dropdown-trigger.arrow.disabled.bottom:after{color:#b9b9b9}.react-dropdown-tree-select .dropdown .dropdown-content{position:absolute;padding:4px;z-index:1;background:#fff;border-top:1px solid rgba(0,0,0,.05);-webkit-box-shadow:0 5px 8px rgba(0,0,0,.15);box-shadow:0 5px 8px rgba(0,0,0,.15)}.react-dropdown-tree-select .dropdown .dropdown-content ul{margin:0;padding:0}
+
+/*# sourceMappingURL=styles.css.map*/
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+}
+
+/* fallback, until https://github.com/CompuIves/codesandbox-client/issues/174 is resolved */
+@font-face {
+    font-family: "Material Icons";
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/materialicons/v36/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2)
+    format("woff2");
+}
+
+.material-icons {
+    font-family: "Material Icons";
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: "liga";
+    -webkit-font-smoothing: antialiased;
+}
+
+/* mdl-demo is a custom classname to increases the specificity of our styles. It can be anything.
+ * The idea is that it is easy to extend/override builtin styles with very little effort.
+ */
+
+.mdl-demo .dropdown-trigger > span:after {
+    font-size: 12px;
+    color: #555;
+}
+
+.mdl-demo .toggle {
+    font: normal normal normal 18px/1 "Material Icons";
+    color: #555;
+    white-space: pre;
+    margin-right: 4px;
+}
+
+.mdl-demo .toggle.collapsed::after {
+    cursor: pointer;
+    content: "\E5CF";
+    vertical-align: middle;
+}
+
+.mdl-demo .toggle.expanded::after {
+    cursor: pointer;
+    content: "\E5CE";
+    vertical-align: middle;
+}
+
+/* checkbox styles */
+.mdl-demo .checkbox-item {
+    position: relative;
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.75rem;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 0;
+    vertical-align: middle;
+}
+
+.mdl-demo .checkbox-item:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #aaa;
+    transition: all 0.3s ease-in-out;
+}
+
+.mdl-demo .checkbox-item:checked:before {
+    height: 50%;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    border-top-style: none;
+    border-right-style: none;
+    border-color: #2196f3;
+}
