@@ -1,5 +1,5 @@
 const location = window.location;
-const url = location.protocol + "//" + location.host + "/" + location.pathname.split('/')[1];
+const url = location.protocol + "//" + location.host;
 
 // const url = "https://demo.lsfusion.org/erp";
 const urlExec = url + "/exec";
