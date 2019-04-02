@@ -74,7 +74,7 @@ class TurnoverChart extends React.Component {
         const newData = [...data].filter(a => a[expression] > 0).sort((a, b) => ((a[expression] || 0) - (b[expression] || 0)) * sort ).slice(0, rowCount);
 
         return (
-            <ResponsiveContainer width="100%" height={70 + 50 * Math.min(data.length, rowCount)}>
+            <ResponsiveContainer width="100%" height={70 + 50 * newData.length}>
                 <BarChart data={newData} layout="vertical">
                     <XAxis type="number" tickFormatter={this.formatNumber} />
                     <YAxis tick={{width:165}} width={100} type="category" dataKey="name" />
